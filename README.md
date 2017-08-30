@@ -1,31 +1,12 @@
 Lab 03: jQuery and events
 =======
 
-## Submission Instructions
-When you are finished with lab, follow these steps to submit your work. Create one Pull Request (aka: "PR") from your Forked repo to the CF repo with your changes, and you'll each submit that same PR link in Canvas.
-
-1. Ensure that all your local changes are committed, and pushed to your origin repo.
-1. Visit the origin repo on github.com, and ensure that all of your completed work has been merged to master via Pull Requests within your repo.
-1. Create a new PR from your Fork to the CF repo and ensure the branches look correct.
-1. Fill in the template based on the text box prompts:
-  1. Write a good descriptive summary of your changes:
-    1. Be sure to include how much time you spent on it, and who you worked with.
-    1. Briefly reflect on and summarize your process.
-1. When you create the PR, it will have a unique URL. Copy this link, share with your partner, and paste it into the assignment submission form in Canvas. Both the driver and the navigator will submit the same PR link.
----
-
 ## Learning Objectives
 * Create event listeners using jQuery's `$.on()`
 * Distinguish when to use event delegation.
 * Select and target HTML elements using the `data` attribute.
 * Run our scripts when the DOM is ready using `$(document).ready()`
   
-
----
-
-## Resources  
-[jQuery API Reference](https://oscarotero.com/jquery/)
-
 ---
 
 ## Feature Tasks  
@@ -40,6 +21,24 @@ When you are finished with lab, follow these steps to submit your work. Create o
 
 - After implementing the "Read On ->" link that shows the remainder of an article beyond the teaser, change the text of the link to "Show Less <-" and hide everything but the teaser.
 
+---
+
+## Resources  
+[jQuery API Reference](https://oscarotero.com/jquery/)
+
+---
+
+## Submission Instructions
+When you are finished with lab, follow these steps to submit your work. Create one Pull Request (aka: "PR") from your Forked repo to the CF repo with your changes, and you'll each submit that same PR link in Canvas.
+
+1. Ensure that all your local changes are committed, and pushed to your origin repo.
+1. Visit the origin repo on github.com, and ensure that all of your completed work has been merged to master via Pull Requests within your repo.
+1. Create a new PR from your Fork to the CF repo and ensure the branches look correct.
+1. Fill in the template based on the text box prompts:
+  1. Write a good descriptive summary of your changes:
+    1. Be sure to include how much time you spent on it, and who you worked with.
+    1. Briefly reflect on and summarize your process.
+1. When you create the PR, it will have a unique URL. Copy this link, share with your partner, and paste it into the assignment submission form in Canvas. Both the driver and the navigator will submit the same PR link.
 ---
 
 ## Rubric  
