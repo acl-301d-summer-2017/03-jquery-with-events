@@ -41,6 +41,10 @@ articleView.handleAuthorFilter = function() {
       //       and then show just the ones that match for the author that was selected.
       //       Use an "attribute selector" to find those articles, and fade them in for the reader.
 
+      $( 'data-author' ).hide();
+      var authorName = $(this).val()
+      $( 'data-author' ).find(authorName).show();
+
     } else {
       // TODO: If the select box was changed to an option that is blank, we should
       //       show all the articles, except the one article we are using as a template.
