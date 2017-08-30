@@ -5,6 +5,9 @@ body {
   line-height: 1.5;
   font-size: 100%;
   color: #313131;
+  background-color: #FDF5BF;
+  border: 2px double #9B8816;
+  padding: 5%;
 }
 
 hr {
