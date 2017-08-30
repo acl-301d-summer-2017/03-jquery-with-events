@@ -37,6 +37,12 @@ Article.prototype.toHtml = function() {
   $newOption.text(this.author);
   $newOption.appendTo($authorFilter);
   
+  var $categoryFilter = $('#category-filter');
+  $newOption = $('<option></option>');
+  $newOption.attr('value', this.category);
+  $newOption.text(this.category);
+  $newOption.appendTo($categoryFilter);
+  
   return $newArticle;
 };
 
