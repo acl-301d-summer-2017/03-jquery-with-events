@@ -64,7 +64,6 @@ articleView.handleCategoryFilter = function () {
       $('article').hide()
       var categoryName = $(this).val()
       $('article[data-category = "' + categoryName + '"]').fadeIn()
-
     } else {
       $('article').show()
     }
@@ -78,19 +77,22 @@ articleView.handleMainNav = function () {
   //       single .tab-content section that is associated with the clicked .tab element.
   //       So: You need to dynamically build a selector string with the correct ID, based on the
   //       data available to you on the .tab element that was clicked.
-  $('.main-nav').click(function(){
-    $('.tab-content').hide();
-    var id =$(this).attr('.tab-content');
-    console.log(event.target);
-    $('section#' + id ).show();
-  });
+  $('.main-nav').on('click', '.tab', function () {
+    $('.tab-content').hide()
+    var $clickedTab = $(this).attr('data-content')
+    $('#' + $clickedTab).show()
+  })
 
-  // $('.main-nav .tab:first').click() // Let's now trigger a click on the first .tab element, to set up the page.
+  $('.main-nav .tab:first').click()
+  // Let's now trigger a click on the first .tab element, to set up the page.
 }
 
 articleView.setTeasers = function () {
   $('.article-body *:nth-of-type(n+2)').hide() // Hide elements beyond the first 2 in any article body.
 
+  $('.read-on').on('click', function () {
+    $('.article-body *:nth-of-type(n+2)').show()
+  })
   // TODO: Add an event handler to reveal all the hidden elements,
   //       when the .read-on link is clicked. You can go ahead and hide the
   //       "Read On" link once it has been clicked. Be sure to prevent the default link-click action!
@@ -104,6 +106,7 @@ articleView.setTeasers = function () {
 $(document).ready(function () {
   articleView.populateFilters()
   articleView.handleAuthorFilter()
-  articleView.handleCategoryFilter();
-  articleView.handleMainNav();
+  articleView.handleCategoryFilter()
+  articleView.handleMainNav()
+  articleView.setTeasers()
 })
