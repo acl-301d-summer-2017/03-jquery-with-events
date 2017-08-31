@@ -44,32 +44,47 @@ articleView.handleAuthorFilter = function() {
       //       Use an "attribute selector" to find those articles, and fade them in for the reader.
       $('article').hide();
       // $('author').fadeIn();
-      var author=$('select').val();
-      $('article[data-author ="'+ author + '"]').fadeIn(); 
+      var author = $('select').val();
+      $('article[data-author = "'+ author + '"]').fadeIn(); 
       
 
     
 
    
     } else {
-      // TODO: If the select box was changed to an option that is blank, we should
+      // DONE / TODO: If the select box was changed to an option that is blank, we should
       //       show all the articles, except the one article we are using as a template.
-
+      $('article').not('template').show();
     }
     $('#category-filter').val('');
   });
 };
 
 articleView.handleCategoryFilter = function() {
-  // TODO: Just like we do for #author-filter above, we should handle change events on the #category-filter element.
+  // DONE / TODO: Just like we do for #author-filter above, we should handle change events on the #category-filter element.
   //       When an option with a value is selected, hide all the articles, then reveal the matches.
   //       When the blank (default) option is selected, show all the articles, except for the template.
   //       Be sure to reset the #author-filter while you are at it!
-
+  $('#category-filter').on('change', function() {
+    if ($(this).val()) {
+      $('article').hide();
+      var category = $(this).val();
+      $('article[data-category = "'+ category + '"]').fadeIn();
+     
+    } else {
+      $('article').not('template').show();
+    }
+    $('#author-filter').val('');
+  });
 };
 
 articleView.handleMainNav = function() {
-  // TODO: Add an event handler to .main-nav elements that will power the Tabs feature.
+  $('.main-nav').on('click', '.tab', function(){
+    $('.tab-content').hide();
+    var clickTab = $(this).attr('data-content');
+    $('#' + clickTab).show();
+  });
+  // DONE / TODO: Add an event handler to .main-nav elements that will power the Tabs feature.
   //       Clicking any .tab element should hide all the .tab-content sections, and then reveal the
   //       single .tab-content section that is associated with the clicked .tab element.
   //       So: You need to dynamically build a selector string with the correct ID, based on the
@@ -96,4 +111,6 @@ articleView.setTeasers = function() {
 $(document).ready(function() {
   articleView.populateFilters();
   articleView.handleAuthorFilter();
+  articleView.handleCategoryFilter();
+  articleView.handleMainNav();
 });
