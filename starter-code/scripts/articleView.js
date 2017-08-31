@@ -47,10 +47,6 @@ articleView.handleAuthorFilter = function() {
       var author = $('select').val();
       $('article[data-author = "'+ author + '"]').fadeIn(); 
       
-
-    
-
-   
     } else {
       // DONE / TODO: If the select box was changed to an option that is blank, we should
       //       show all the articles, except the one article we are using as a template.
@@ -61,10 +57,6 @@ articleView.handleAuthorFilter = function() {
 };
 
 articleView.handleCategoryFilter = function() {
-  // DONE / TODO: Just like we do for #author-filter above, we should handle change events on the #category-filter element.
-  //       When an option with a value is selected, hide all the articles, then reveal the matches.
-  //       When the blank (default) option is selected, show all the articles, except for the template.
-  //       Be sure to reset the #author-filter while you are at it!
   $('#category-filter').on('change', function() {
     if ($(this).val()) {
       $('article').hide();
@@ -77,6 +69,10 @@ articleView.handleCategoryFilter = function() {
     $('#author-filter').val('');
   });
 };
+// DONE / TODO: Just like we do for #author-filter above, we should handle change events on the #category-filter element.
+//       When an option with a value is selected, hide all the articles, then reveal the matches.
+//       When the blank (default) option is selected, show all the articles, except for the template.
+//       Be sure to reset the #author-filter while you are at it!
 
 articleView.handleMainNav = function() {
   $('.main-nav').on('click', '.tab', function(){
@@ -95,7 +91,14 @@ articleView.handleMainNav = function() {
 };
 
 articleView.setTeasers = function() {
-  $('.article-body *:nth-of-type(n+2)').hide(); // Hide elements beyond the first 2 in any article body.
+  $('.article-body *:nth-of-type(n+2)').hide();
+  $('.read-on').on('click', function() {
+    if($(this).text === 'Read on') {
+      $(this).parent().find('.article-body *:nth-of-type(n+2)').show();
+      // $(this.text)
+    }
+  });
+   // Hide elements beyond the first 2 in any article body.
 
   // TODO: Add an event handler to reveal all the hidden elements,
   //       when the .read-on link is clicked. You can go ahead and hide the
