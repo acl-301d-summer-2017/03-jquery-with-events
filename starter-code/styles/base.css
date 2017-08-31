@@ -1,5 +1,9 @@
 /* TODO: Add some coordinated colors to make the blog more distinguished:
          Use an accent color for all links, and remove their underline. */
+a {
+  text-decoration: none;
+  color: blue;
+}
 
 body {
   line-height: 1.5;
