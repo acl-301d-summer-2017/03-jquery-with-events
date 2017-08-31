@@ -100,6 +100,15 @@ $('.main-nav tab:first').click();
 
 articleView.setTeasers = function() {
   $('.article-body *:nth-of-type(n+2)').hide(); // Hide elements beyond the first 2 in any article body.
+  $(".read-on").on('click',function(){
+    var $clickedArticle = $(this).parent();
+    debugger;
+    $clickedArticle.find('.article-body *:nth-of-type(n+2)').show();
+
+  });
+    // var $clickedTab = $(this).attr('data-content');
+    // $("#"+$clickedTab).show();
+
 
   // TODO: Add an event handler to reveal all the hidden elements,
   //       when the .read-on link is clicked. You can go ahead and hide the
@@ -117,5 +126,6 @@ $(document).ready(function() {
   articleView.handleAuthorFilter();
   articleView.handleCategoryFilter();
   articleView.handleMainNav();
+  articleView.setTeasers();
   
 });
