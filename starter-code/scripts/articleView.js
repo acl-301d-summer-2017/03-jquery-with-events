@@ -4,6 +4,7 @@
 var articleView = {};
 
 articleView.populateFilters = function() {
+   console.log('hello world');
   $('article').each(function() {
     var authorName, category, optionTag;
     if (!$(this).hasClass('template')) {
@@ -37,29 +38,49 @@ articleView.handleAuthorFilter = function() {
     //         defining. "$(this)" is using jQuery to select that element, so we can chain jQuery methods
     //         onto it.
     if ($(this).val()) {
-      // TODO: If the select box was changed to an option that has a value, we need to hide all the articles,
+
+      // DONE/TODO: If the select box was changed to an option that has a value, we need to hide all the articles,
       //       and then show just the ones that match for the author that was selected.
       //       Use an "attribute selector" to find those articles, and fade them in for the reader.
-
+      $('article').hide();
+      // $('author').fadeIn();
+      var author = $('select').val();
+      $('article[data-author = "'+ author + '"]').fadeIn(); 
+      
     } else {
-      // TODO: If the select box was changed to an option that is blank, we should
+      // DONE / TODO: If the select box was changed to an option that is blank, we should
       //       show all the articles, except the one article we are using as a template.
-
+      $('article').not('template').show();
     }
     $('#category-filter').val('');
   });
 };
 
 articleView.handleCategoryFilter = function() {
-  // TODO: Just like we do for #author-filter above, we should handle change events on the #category-filter element.
-  //       When an option with a value is selected, hide all the articles, then reveal the matches.
-  //       When the blank (default) option is selected, show all the articles, except for the template.
-  //       Be sure to reset the #author-filter while you are at it!
-
+  $('#category-filter').on('change', function() {
+    if ($(this).val()) {
+      $('article').hide();
+      var category = $(this).val();
+      $('article[data-category = "'+ category + '"]').fadeIn();
+     
+    } else {
+      $('article').not('template').show();
+    }
+    $('#author-filter').val('');
+  });
 };
+// DONE / TODO: Just like we do for #author-filter above, we should handle change events on the #category-filter element.
+//       When an option with a value is selected, hide all the articles, then reveal the matches.
+//       When the blank (default) option is selected, show all the articles, except for the template.
+//       Be sure to reset the #author-filter while you are at it!
 
 articleView.handleMainNav = function() {
-  // TODO: Add an event handler to .main-nav elements that will power the Tabs feature.
+  $('.main-nav').on('click', '.tab', function(){
+    $('.tab-content').hide();
+    var clickTab = $(this).attr('data-content');
+    $('#' + clickTab).show();
+  });
+  // DONE / TODO: Add an event handler to .main-nav elements that will power the Tabs feature.
   //       Clicking any .tab element should hide all the .tab-content sections, and then reveal the
   //       single .tab-content section that is associated with the clicked .tab element.
   //       So: You need to dynamically build a selector string with the correct ID, based on the
@@ -70,7 +91,14 @@ articleView.handleMainNav = function() {
 };
 
 articleView.setTeasers = function() {
-  $('.article-body *:nth-of-type(n+2)').hide(); // Hide elements beyond the first 2 in any article body.
+  $('.article-body *:nth-of-type(n+2)').hide();
+  $('.read-on').on('click', function() {
+    if($(this).text === 'Read on') {
+      $(this).parent().find('.article-body *:nth-of-type(n+2)').show();
+      // $(this.text)
+    }
+  });
+   // Hide elements beyond the first 2 in any article body.
 
   // TODO: Add an event handler to reveal all the hidden elements,
   //       when the .read-on link is clicked. You can go ahead and hide the
@@ -84,5 +112,8 @@ articleView.setTeasers = function() {
 
 // TODO: Call all of the above functions, once we are sure the DOM is ready.
 $(document).ready(function() {
-  
+  articleView.populateFilters();
+  articleView.handleAuthorFilter();
+  articleView.handleCategoryFilter();
+  articleView.handleMainNav();
 });
