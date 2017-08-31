@@ -82,8 +82,10 @@ articleView.handleCategoryFilter = function() {
 };
 
 articleView.handleMainNav = function() {
-  $('.main-nav').on('click',function(){
+  $('.main-nav').on('click', '.tab',function(){
     $('.tab-content').hide();
+    var $clickedTab = $(this).attr('data-content');
+    $("#"+$clickedTab).show();
   });
   
   // TODO: Add an event handler to .main-nav elements that will power the Tabs feature.
