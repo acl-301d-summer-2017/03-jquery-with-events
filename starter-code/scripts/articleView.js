@@ -43,6 +43,12 @@ articleView.handleAuthorFilter = function() {
       //       and then show just the ones that match for the author that was selected.
       //       Use an "attribute selector" to find those articles, and fade them in for the reader.
       $('article').hide();
+      // $('author').fadeIn();
+      var author=$('select').val();
+      $('article[data-author ="'+ author + '"]').fadeIn(); 
+      
+
+    
 
    
     } else {
