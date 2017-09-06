@@ -67,7 +67,9 @@ articleView.handleCategoryFilter = function() {
     } else {
       $( 'article[data-author]' ).show();
     }
+    $('#author-filter').val('')
   })
+ // $('#author-filter').val('')
 };
 
 articleView.handleMainNav = function() {
@@ -94,8 +96,9 @@ articleView.setTeasers = function() {
   //       "Read On" link once it has been clicked. Be sure to prevent the default link-click action!
   //       Ideally, we'd attach this as just 1 event handler on the #articles section, and let it
   //       process any .read-on clicks that happen within child nodes.
-  $('.read-on').click(function(){
-    $('.article-body *:nth-of-type(n+2)').show();
+  $('.read-on').on('click', function(){
+    console.log(this)
+    $(this).parent().find('.article-body *:nth-of-type(n+2)').show();
   })
 
   // STRETCH GOAl!: change the 'Read On' link to 'Show Less'
